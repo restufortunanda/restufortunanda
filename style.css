@@ -1,0 +1,490 @@
+/* --- Oceanic Cyber Drift Core Variables --- */
+:root {
+    --canvas-bg: #eef2f7; 
+    --card-surface: #ffffff;
+    --card-border: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-muted: #64748b;
+    
+    /* Cyber Cyan Accent */
+    --neon-cyan: #0ea5e9;
+    --drift-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    --neon-glow-shadow: rgba(14, 165, 233, 0.2);
+}
+
+.dark {
+    --canvas-bg: #030712; 
+    --card-surface: #0b1329; 
+    --card-border: rgba(14, 165, 233, 0.15);
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    
+    --neon-cyan: #38bdf8;
+    --drift-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    --neon-glow-shadow: rgba(56, 189, 248, 0.45);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--canvas-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Dynamic Background Matrix Line --- */
+.ocean-grid-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, var(--card-border) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--card-border) 1px, transparent 1px);
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* --- Futuristic Streamlined Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(11, 19, 41, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.9rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--neon-cyan);
+}
+
+.nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.nav-logo span {
+    color: var(--neon-cyan);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--neon-cyan);
+}
+
+.btn-theme {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid var(--neon-cyan);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.btn-theme:hover {
+    background: var(--drift-gradient);
+    box-shadow: 0 0 12px var(--neon-glow-shadow);
+}
+
+/* --- Layout Container --- */
+.container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Sharp Border Modern Cyber Card --- */
+.modern-cyber-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.dark .modern-cyber-card {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modern-cyber-card:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: -4px 4px 0px var(--neon-cyan);
+    transform: translate(2px, -2px);
+}
+
+.content-padding {
+    padding: 1.5rem;
+}
+
+.fill-height {
+    height: calc(100% - 2.5rem);
+    display: flex;
+    align-items: center;
+}
+
+/* --- Asymmetric Hero Section --- */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-left: 5px solid var(--neon-cyan);
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        flex-direction: row;
+    }
+}
+
+.avatar-frame {
+    position: relative;
+    width: 8.5rem;
+    height: 8.5rem;
+    flex-shrink: 0;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 2px solid var(--card-border);
+}
+
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(14, 165, 233, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    border-right: 3px solid var(--neon-cyan);
+}
+
+.badge-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 1px;
+}
+
+.pulse-indicator {
+    width: 7px; height: 7px;
+    background-color: var(--neon-cyan);
+    border-radius: 50%;
+}
+
+.hero-text h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.neon-text-glow {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 15px var(--neon-glow-shadow);
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+}
+
+/* --- Cyber Section Titles --- */
+.cyber-section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+.cyber-section-title span {
+    color: var(--neon-cyan);
+}
+
+article, section {
+    margin-bottom: 2.5rem;
+}
+
+.about-text {
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+/* --- Split Layout Upper Grid --- */
+.profile-split-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .profile-split-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* --- New Timeline Layout Customization --- */
+.timeline-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding-left: 1.2rem;
+    border-left: 2px dashed var(--card-border);
+    margin-top: 0.2rem;
+}
+
+.timeline-card {
+    padding: 1.1rem 1.4rem;
+    position: relative;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.timeline-year {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--neon-cyan);
+}
+
+.timeline-institution {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.timeline-badge-active, .timeline-badge-mute {
+    position: absolute;
+    left: -1.75rem;
+    top: 1.5rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.timeline-badge-active {
+    background: var(--neon-cyan);
+    box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.timeline-badge-mute {
+    background: var(--text-muted);
+}
+
+.capsule-tag {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 2px;
+}
+
+.capsule-tag.tag-primary {
+    background: var(--drift-gradient);
+    color: #ffffff;
+}
+
+.capsule-tag.tag-secondary {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-muted);
+}
+.dark .capsule-tag.tag-secondary {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Asymmetric Lower Grid Layout --- */
+.main-asymmetric-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .main-asymmetric-grid {
+        grid-template-columns: 0.95fr 1.05fr; /* Mengubah proporsi Tasks dan Form */
+    }
+}
+
+/* --- Clean Form Layout --- */
+.cyber-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.input-container label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.cyber-form input, .cyber-form textarea, .todo-inline-form input {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--card-border);
+    background: var(--canvas-bg);
+    color: var(--text-primary);
+    border-radius: 2px;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: 0.25s;
+}
+
+.cyber-form input:focus, .cyber-form textarea:focus, .todo-inline-form input:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 8px var(--neon-glow-shadow);
+}
+
+/* --- Button Drift Neon Effect --- */
+.btn-neon-drift {
+    background: var(--drift-gradient);
+    color: #ffffff;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-neon-drift:hover {
+    box-shadow: 0 0 15px var(--neon-glow-shadow);
+    filter: brightness(1.1);
+}
+
+.full-width-btn {
+    width: 100%;
+    padding: 0.9rem;
+}
+
+/* --- Inline Todo App System --- */
+.todo-inline-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.square-btn {
+    padding: 0 1.2rem;
+    font-size: 1.2rem;
+}
+
+#cyber-todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.todo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 2px;
+    background: var(--canvas-bg);
+}
+
+.todo-row:hover {
+    border-color: var(--neon-cyan);
+}
+
+.todo-row.state-completed {
+    border-left: 3px solid #10b981;
+    opacity: 0.55;
+}
+
+.todo-row.state-normal {
+    border-left: 3px solid var(--neon-cyan);
+}
+
+.todo-link-text {
+    flex: 1;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.line-through-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.todo-remove-action {
+    color: #ef4444;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.todo-remove-action:hover {
+    transform: scale(1.2);
+}
+
+/* --- Industrial Technical Footer --- */
+.cyber-footer {
+    text-align: center;
+    padding: 2.2rem;
+    border-top: 1px dashed var(--card-border);
+    margin-top: 5rem;
+}
+
+.cyber-footer p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
